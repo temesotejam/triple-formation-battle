@@ -99,9 +99,9 @@ footer{padding:13px 2px;color:#647994;font-size:10px;display:flex;justify-conten
     <section class="card panel">
       <h2>01 / FORMATION SEQUENCE</h2>
       <div class="sequence">
-        <button class="unit-btn" data-unit="A" title="Arrow Right"><span class="letter">A</span><small>VECTOR · →</small></button>
+        <button class="unit-btn" data-unit="A" title="Arrow Left"><span class="letter">A</span><small>VECTOR · ←</small></button>
         <button class="unit-btn" data-unit="B" title="Arrow Down"><span class="letter">B</span><small>STRIKER · ↓</small></button>
-        <button class="unit-btn" data-unit="C" title="Arrow Left"><span class="letter">C</span><small>BASTION · ←</small></button>
+        <button class="unit-btn" data-unit="C" title="Arrow Right"><span class="letter">C</span><small>BASTION · →</small></button>
       </div>
       <div class="queue" id="queue">
         <div class="slot">1</div><div class="slot">2</div><div class="slot">3</div>
@@ -110,7 +110,7 @@ footer{padding:13px 2px;color:#647994;font-size:10px;display:flex;justify-conten
         <button class="secondary warn" id="cancelBtn">CANCEL [X]</button>
         <button class="secondary" id="splitBtn">SPLIT / MERGE [V]</button>
       </div>
-      <p class="help" style="margin:9px 0 0">Press <kbd>→</kbd> for A, <kbd>↓</kbd> for B, and <kbd>←</kbd> for C in any order. The third input locks the matching form. All six orders are different.</p>
+      <p class="help" style="margin:9px 0 0">Press <kbd>←</kbd> for A, <kbd>↓</kbd> for B, and <kbd>→</kbd> for C in any order. The third input locks the matching form. All six orders are different.</p>
     </section>
 
     <section class="card panel">
@@ -150,7 +150,7 @@ footer{padding:13px 2px;color:#647994;font-size:10px;display:flex;justify-conten
       <h2>04 / CONTROL GUIDE</h2>
       <div class="help">
         <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> — steer the formation; assisted movement remains active</div>
-        <div><kbd>→</kbd> <kbd>↓</kbd> <kbd>←</kbd> — select A / B / C in sequence</div>
+        <div><kbd>←</kbd> <kbd>↓</kbd> <kbd>→</kbd> — select A / B / C in sequence</div>
         <div><kbd>V</kbd> — split or return to combined mode</div>
         <div><kbd>X</kbd> — clear an incomplete sequence</div>
         <div><kbd>SHIFT</kbd> — short burst dash　 <kbd>P</kbd> — pause</div>
@@ -558,7 +558,7 @@ function drawOverlay(){
   ctx.fillStyle="#f1f7ff";ctx.font="bold 48px monospace";ctx.fillText("TRIPLE//SHIFT",W/2,H/2-25);
   ctx.fillStyle="#9eb4ce";ctx.font="15px monospace";ctx.fillText("A formation is not chosen. It is assembled.",W/2,H/2+12);
   ctx.fillStyle="#d5e9ff";ctx.font="13px monospace";ctx.fillText("Press START SORTIE to deploy",W/2,H/2+62);
-  ctx.fillStyle="#5bd8ff";ctx.font="12px monospace";ctx.fillText("→ ↓ ←  /  ANY ORDER  /  LIVE RECONFIGURATION",W/2,H/2+96);
+  ctx.fillStyle="#5bd8ff";ctx.font="12px monospace";ctx.fillText("← ↓ →  /  ANY ORDER  /  LIVE RECONFIGURATION",W/2,H/2+96);
  }else if(state.mode==="paused"){
   ctx.fillStyle="#020711bb";ctx.fillRect(0,0,W,H);ctx.textAlign="center";ctx.fillStyle="#fff";ctx.font="bold 38px monospace";ctx.fillText("PAUSED",W/2,H/2);ctx.fillStyle="#9eb4ce";ctx.font="14px monospace";ctx.fillText("Press P or PAUSE to resume",W/2,H/2+34);
  }else if(state.mode==="gameover"){
@@ -625,9 +625,9 @@ window.addEventListener("keydown",ev=>{
  if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(ev.key))ev.preventDefault();
  keys[k]=true;
  if(ev.repeat)return;
- if(ev.key==="ArrowRight")selectUnit("A");
+ if(ev.key==="ArrowLeft")selectUnit("A");
  if(ev.key==="ArrowDown")selectUnit("B");
- if(ev.key==="ArrowLeft")selectUnit("C");
+ if(ev.key==="ArrowRight")selectUnit("C");
  if(k==="v")toggleSplit();
  if(k==="x")cancelSequence();
  if(k==="Shift")triggerDash();
