@@ -23,10 +23,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Validate inline game script
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script>(.*?)</script>", html, re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f"Expected one inline script, found {len(scripts)}")
+          Path("/tmp/triple-shift.js").write_text(scripts[0], encoding="utf-8")
+          PY
+          node --check /tmp/triple-shift.js
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
