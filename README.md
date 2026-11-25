@@ -23,8 +23,8 @@ The deployment workflow validates the inline JavaScript and publishes the reposi
 
 ## Controls
 
-- **WASD / Arrow keys**: steer the formation; assisted movement remains active.
-- **1 / 2 / 3**: select A / B / C in sequence. The third selection locks one of six distinct forms.
+- **WASD**: steer the formation; assisted movement remains active.
+- **Right / Down / Left arrow keys**: select A / B / C in sequence. The third selection locks one of six distinct forms.
 - **V**: split or recombine into the current form.
 - **X**: cancel an incomplete formation sequence.
 - **Shift**: burst dash.
