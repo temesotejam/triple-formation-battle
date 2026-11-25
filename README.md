@@ -10,7 +10,9 @@ https://temesotejam.github.io/triple-formation-battle/
 
 ## First-time Pages setup
 
-The repository owner must enable Pages once:
+The repository owner has enabled Pages for this repository. If the first deployment has not yet completed, the latest commit triggers the workflow automatically.
+
+Initial setup (already completed):
 
 1. Open **Settings → Pages** in this repository.
 2. Under **Build and deployment → Source**, select **GitHub Actions**.
