@@ -285,7 +285,6 @@ function spawnEnemy(type){
 function addEffect(x,y,type="hit",life=.35){state.effects.push({x,y,type,life,max:life,phase:Math.random()*6})}
 function shoot(from,to,damage,kind="player",speed=380,size=3,color="#b9f5ff",spread=0){
  const base=Math.atan2(to.y-from.y,to.x-from.x);
- for(let i=0;i<spread.length;i++){}
  const angles=Array.isArray(spread)?spread:[0];
  angles.forEach(offset=>{
   const a=base+offset;
@@ -295,7 +294,7 @@ function shoot(from,to,damage,kind="player",speed=380,size=3,color="#b9f5ff",spr
 function fireAt(from,e,style){
  const f=activeForm();
  if(style==="split"){
-  shoot(from,e,f.damage*.62,"player",350,2.5,from.color);
+  shoot(from,e,8,"player",350,2.5,from.color);
   return;
  }
  if(style==="spread"){
@@ -588,7 +587,7 @@ function renderHud(){
  $("formRole").textContent=state.split?"THREE UNITS · SPLIT MODE":f.role;
  $("speedStat").textContent=state.split?"MID":Math.round(f.speed);
  $("powerStat").textContent=state.split?"3x":f.power+"/5";
- $("armorStat").textContent=state.split?"LOW":Math.round((1/f.armor)*100)+"%";
+ $("armorStat").textContent=state.split?"LOW":Math.round((1-f.armor)*100)+"%";
  $("stateLabel").textContent=state.mode==="playing"?(state.split?"SPLIT":"COMBINED"):state.mode.toUpperCase();
  $("statusPill").textContent=state.mode==="playing"?"IN COMBAT":state.mode.toUpperCase();
  const t=target();
